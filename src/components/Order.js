@@ -22,7 +22,7 @@ export default function Order({ channels }) {
             if (!channel.href) {
               return (
                 <div key={channel.name} className={className}>
-                  <span className="order-icon">
+                  <span className={`order-icon order-icon-${channel.name.toLowerCase()}`}>
                     <Image
                       src={channel.logo}
                       alt={channel.name}
@@ -48,7 +48,7 @@ export default function Order({ channels }) {
                 rel="noreferrer"
                 className={className}
               >
-                <span className="order-icon">
+                <span className={`order-icon order-icon-${channel.name.toLowerCase()}`}>
                   <Image
                     src={channel.logo}
                     alt={channel.name}

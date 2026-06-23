@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import OrderModal from './OrderModal';
 
 export default function Menu({ items, categories }) {
   const [filter, setFilter] = useState('semua');
   const [filteredItems, setFilteredItems] = useState(items);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     setFilteredItems(
@@ -44,7 +46,14 @@ export default function Menu({ items, categories }) {
 
         <div className="menu-grid">
           {filteredItems.map((item) => (
-            <article key={`${item.category}-${item.name}`} className="menu-card">
+            <article 
+              key={`${item.category}-${item.name}`} 
+              className="menu-card"
+              onClick={() => setSelectedItem(item)}
+              style={{ cursor: 'pointer' }}
+              role="button"
+              tabIndex={0}
+            >
               <div className="menu-card-img">
                 <Image
                   src={item.image}
@@ -59,12 +68,39 @@ export default function Menu({ items, categories }) {
                 </div>
                 <div className="menu-name">{item.name}</div>
                 <div className="menu-note">{item.description}</div>
-                <div className="menu-cta-note">Tanya ketersediaan via WhatsApp</div>
+                
+                {(item.priceNormal || item.priceGoFood) && (
+                  <div className="menu-prices">
+                    {item.priceNormal && (
+                      <div className="price-item">
+                        <span className="price-label">Normal</span>
+                        <span className="price-value">
+                          Rp {item.priceNormal.toLocaleString('id-ID')}
+                        </span>
+                      </div>
+                    )}
+                    {item.priceGoFood && (
+                      <div className="price-item gofood-price">
+                        <span className="price-label">GoFood</span>
+                        <span className="price-value">
+                          Rp {item.priceGoFood.toLocaleString('id-ID')}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                )}
+                
               </div>
             </article>
           ))}
         </div>
       </div>
+
+      <OrderModal 
+        isOpen={!!selectedItem} 
+        onClose={() => setSelectedItem(null)} 
+        item={selectedItem} 
+      />
     </section>
   );
 }

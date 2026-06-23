@@ -30,7 +30,7 @@ export default function Location({ site }) {
           <div className="location-actions">
             <a
               href={site.whatsappHref}
-              className="btn-primary"
+              className="btn-whatsapp-solid"
               target="_blank"
               rel="noreferrer"
             >

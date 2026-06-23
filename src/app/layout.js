@@ -34,10 +34,18 @@ export const metadata = {
   },
 };
 
+import { CartProvider } from '@/context/CartContext';
+import CartWidget from '@/components/CartWidget';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="id">
-      <body className={`${playfair.variable} ${mulish.variable}`}>{children}</body>
+      <body className={`${playfair.variable} ${mulish.variable}`}>
+        <CartProvider>
+          {children}
+          <CartWidget />
+        </CartProvider>
+      </body>
     </html>
   );
 }

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Footer({ site }) {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" id="kontak">
       <div className="container footer-inner">
         <div className="footer-top">
           <div className="footer-brand">
@@ -55,15 +55,6 @@ export default function Footer({ site }) {
           <p>WhatsApp 0831-4292-7758</p>
         </div>
       </div>
-      <a
-        href={site.whatsappHref}
-        className="wa-float"
-        target="_blank"
-        rel="noreferrer"
-        title="Chat WhatsApp"
-      >
-        WA
-      </a>
     </footer>
   );
 }
