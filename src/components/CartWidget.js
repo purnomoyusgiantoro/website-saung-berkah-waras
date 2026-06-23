@@ -195,6 +195,30 @@ export default function CartWidget() {
                 />
                 Kirim Pesanan via WhatsApp
               </button>
+
+              <a 
+                href={siteData.gofoodHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cart-checkout-btn gofood-btn"
+                style={{ 
+                  marginTop: '12px', 
+                  display: 'flex', 
+                  justifyContent: 'center', 
+                  alignItems: 'center', 
+                  gap: '8px', 
+                  textDecoration: 'none' 
+                }}
+              >
+                <Image 
+                  src="/images/brands/gofood.png" 
+                  alt="GoFood" 
+                  width={60} 
+                  height={18} 
+                  style={{ objectFit: 'contain' }}
+                />
+                Pesan lewat GoFood
+              </a>
             </div>
           </div>
         </div>

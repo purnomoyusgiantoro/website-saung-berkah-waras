@@ -81,15 +81,41 @@ export default function MobileLanding({ onEnterOrder }) {
         <div className="sf-menu-grid">
           {siteData.galleryItems.slice(0, 6).map((img, i) => (
              <div key={i} className="sf-grid-item">
-               <Image src={img.image} alt={img.title} fill style={{ objectFit: 'cover' }} />
+               <Image src={img.image} alt={img.title} fill sizes="(max-width: 768px) 33vw, 150px" style={{ objectFit: 'cover' }} />
              </div>
           ))}
         </div>
         
-        <div className="sf-cta-container">
-          <button className="sf-btn-primary" onClick={onEnterOrder}>
-            Lihat Daftar Menu & Pesan
+        <div className="sf-cta-container" style={{ flexDirection: 'column', gap: '12px', padding: '0 16px' }}>
+          <button 
+            className="sf-btn-primary" 
+            onClick={onEnterOrder}
+            style={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              gap: '8px' 
+            }}
+          >
+             <Image src="/images/brands/whatsapp.png" alt="WhatsApp" width={24} height={24} style={{ borderRadius: '50%' }} />
+             Pesan lewat WhatsApp
           </button>
+          <a 
+            href={siteData.gofoodHref} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="sf-btn-primary gofood-btn" 
+            style={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              gap: '8px', 
+              textDecoration: 'none' 
+            }}
+          >
+             <Image src="/images/brands/gofood.png" alt="GoFood" width={60} height={18} style={{ objectFit: 'contain' }} />
+             Pesan lewat GoFood
+          </a>
         </div>
       </section>
 

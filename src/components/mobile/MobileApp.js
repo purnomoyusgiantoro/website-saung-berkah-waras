@@ -14,19 +14,21 @@ export default function MobileApp() {
   const [currentView, setCurrentView] = useState('landing'); // 'landing' | 'order'
   const [activeCategory, setActiveCategory] = useState('semua');
 
-  if (currentView === 'landing') {
-    return <MobileLanding onEnterOrder={() => setCurrentView('order')} />;
-  }
-
   return (
     <div className="mobile-app-layout">
-      <MobileHeader />
-      <div className="mobile-scroll-area">
-        <MobileBanner />
-        <MobileCategories activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
-        <MobileMenuList items={menuData} activeCategory={activeCategory} />
-      </div>
-      <MobileCartBar />
+      {currentView === 'landing' ? (
+        <MobileLanding onEnterOrder={() => setCurrentView('order')} />
+      ) : (
+        <>
+          <MobileHeader onBack={() => setCurrentView('landing')} />
+          <div className="mobile-scroll-area">
+            <MobileBanner />
+            <MobileCategories activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+            <MobileMenuList items={menuData} activeCategory={activeCategory} />
+          </div>
+          <MobileCartBar />
+        </>
+      )}
     </div>
   );
 }

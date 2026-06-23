@@ -2194,3 +2194,15 @@ main {
     font-size: 0.95rem;
   }
 }
+
+/* GoFood Button Utility */
+.gofood-btn {
+  background: #ee2737 !important;
+  box-shadow: 0 8px 24px rgba(238, 39, 55, 0.3) !important;
+  color: #ffffff !important;
+}
+
+.gofood-btn:hover {
+  background: #cc1e2c !important;
+  box-shadow: 0 12px 24px rgba(238, 39, 55, 0.4) !important;
+}
